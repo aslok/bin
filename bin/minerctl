@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+PATH='/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl'
+
+WEB_STATE=$(lynx 'http://dwarfpool.com/eth/address?wallet=fd10a43d6e951aef7578546bdf7f3268d943fe24' -dump | grep 'Current approx' | tr -dc '0-9')
+
+if [ $WEB_STATE -eq 0 ]; then
+    echo $(date) '-' restart from web >> /home/dima/restart.log
+    PIDS=$(ps ax | grep eth-proxy | grep -v grep | awk '{print $1}')
+#    kill -15 $PIDS
+fi
+
+PROXY_STATE=$(ps ax | grep eth-proxy | grep -v grep)
+if [ -z "$PROXY_STATE" ]; then
+    echo start proxy
+    echo > /home/dima/proxy.log
+    cd /home/dima/eth-proxy
+    python2 eth-proxy.py &> /home/dima/proxy.log &
+fi
+
+sleep 2
+
+MINER_STATE=$(ps ax | grep ethminer | grep -v grep)
+if [ -z "$MINER_STATE" ]; then
+    echo start ethminer
+    echo > /home/dima/ethminer.log
+    ethminer --farm-recheck 200 -G -F http://127.0.0.1:8080/rig1 &> /home/dima/ethminer.log &
+fi

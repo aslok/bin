@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+PATH='/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl'
+
+FILE='/home/dima/ethminer.log'
+
+tail -n 1000 "$FILE" &> "$FILE".bak
+mv "$FILE".bak "$FILE"

@@ -1,0 +1,54 @@
+[input-def]
+0=*
+
+[input2]
+0=/home/dima/Downloads/
+1=/home/dima/
+2=/home/dima/eth-proxy
+
+[cmdline]
+0=ls
+1=htop
+2=m
+3=tail - f 
+4=tail -f ethminer.log
+5=cat .ssh/id_rsa.pub
+6=
+
+[Dir Hist New Right Panel]
+0=/home/dima/Downloads
+1=/home/dima/Downloads/eth-proxy-master/stratum
+2=/home/dima/Downloads/eth-proxy-master/mining_libs
+3=/home/dima/Downloads/eth-proxy-master/log
+4=/home/dima/Downloads/eth-proxy-master
+5=/home/dima
+
+[Dir Hist New Left Panel]
+0=/home/dima/Downloads/eth-proxy-em.zip/uzip://eth-proxy
+1=/home/dima/Downloads/eth-proxy-em.zip/uzip://
+2=/home/dima/Downloads/eth-proxy-master.zip/uzip://
+3=/opt
+4=/home/dima/eth-proxy/log
+5=/boot
+6=/grub
+7=/home/dima/.ethereum/geth/ethash
+8=/home/dima/.ethereum/geth/chaindata
+9=/home/dima/.cache/mc
+10=/home/dima/.cache
+11=/usr
+12=/etc
+13=/home/dima/.config/htop
+14=/home/dima/.config
+15=/home/dima/.local
+16=/home/dima/.nv
+17=/home/dima/.nvclock
+18=/home/dima/Downloads
+19=/home/dima/.ethereum/geth
+20=/home/dima/.ethereum/keystore
+21=/home/dima/.ethereum
+22=/home/dima/eth-proxy
+23=/bin
+24=/
+25=/home
+26=/home/dima/bin
+27=/home/dima
