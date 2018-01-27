@@ -2,14 +2,6 @@
 
 PATH='/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl'
 
-WEB_STATE=$(lynx 'http://dwarfpool.com/eth/address?wallet=fd10a43d6e951aef7578546bdf7f3268d943fe24' -dump | grep 'Current approx' | tr -dc '0-9')
-
-if [ $WEB_STATE -eq 0 ]; then
-    echo $(date) '-' restart from web >> /home/dima/restart.log
-    PIDS=$(ps ax | grep eth-proxy | grep -v grep | awk '{print $1}')
-#    kill -15 $PIDS
-fi
-
 PROXY_STATE=$(ps ax | grep eth-proxy | grep -v grep)
 if [ -z "$PROXY_STATE" ]; then
     echo start proxy

@@ -2,7 +2,15 @@
 
 PATH='/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl'
 
-FILE='/home/dima/ethminer.log'
+LAST_UPDATED=$(echo `lynx 'http://dwarfpool.com/eth/api?wallet=fd10a43d6e951aef7578546bdf7f3268d943fe24&email=aslok.zp@gmail.com' --dump | grep last_submit | sed -e 's/"//g' -e 's/last_submit://' -e 's/GMT,//'`)
+TS_LAST=$(date -u -d"$LAST_UPDATED" +%s)
+TS_NOW=$(date -u +%s)
+SECONDS=$(( $TS_NOW - $TS_LAST ))
+MINUTS=$(( $SECONDS / 60 ))
+HOURS=$(( $SECONDS / 3600 ))
 
-tail -n 1000 "$FILE" &> "$FILE".bak
-mv "$FILE".bak "$FILE"
+if [ $MINUTS -gt 30 ]; then
+    echo $(date) '-' restart from web >> /home/dima/restart.log
+    PIDS=$(ps ax | grep eth-proxy | grep -v grep | awk '{print $1}')
+    kill -15 $PIDS
+fi

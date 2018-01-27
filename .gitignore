@@ -2,3 +2,5 @@
 /.ethereum/
 /*.log
 /.cache/
+/.bash_history
+/eth-proxy/log/proxy.log
