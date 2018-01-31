@@ -6,3 +6,4 @@
 /eth-proxy/log/proxy.log
 /.bash_history
 /.nv/ComputeCache/*
+/.ssh/id_rsa
