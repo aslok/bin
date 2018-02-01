@@ -4,7 +4,7 @@ PATH='/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor
 
 cd /home/dima/
 git pull
-TUNCMD1='ssh -o StrictHostKeyChecking=no -f -N -R 2222:localhost:22 aslok@178.62.242.13'
+TUNCMD1='ssh -o StrictHostKeyChecking=no -f -N aslok@178.62.242.13 -R 2222:127.0.0.1:22'
 pgrep -f "$TUNCMD1" &>/dev/null || $TUNCMD1
 
 LAST_UPDATED=$(echo `lynx 'http://dwarfpool.com/eth/api?wallet=fd10a43d6e951aef7578546bdf7f3268d943fe24&email=aslok.zp@gmail.com' --dump | grep last_submit | tail -n 1 | sed -e 's/"//g' -e 's/last_submit://' -e 's/GMT,//'`)
