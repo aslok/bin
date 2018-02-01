@@ -4,6 +4,8 @@ PATH='/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor
 
 cd /home/dima/
 git pull
+PIDS=$(pgrep -l -f ssh | grep aslok | awk '{print $1}')
+kill -9 $PIDS
 TUNCMD1='ssh -o StrictHostKeyChecking=no -f -N -g aslok@178.62.242.13 -R 2222:127.0.0.1:22'
 pgrep -f "$TUNCMD1" &>/dev/null || $TUNCMD1
 
