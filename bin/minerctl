@@ -22,6 +22,5 @@ MINER_STATE=$(ps ax | grep ethminer | grep -v grep)
 if [ -z "$MINER_STATE" ]; then
     echo start ethminer
     echo > /home/dima/ethminer.log
-    ethminer --farm-recheck 200 -G -F http://127.0.0.1:8080/rig1 &> /home/dima/ethminer.log &
-    #ethminer --cuda-devices 2 --cuda-parallel-hash 8 --cuda-streams 8 --farm-recheck 200 -U -F http://127.0.0.1:8080/rig1 &> /home/dima/ethminer.log &
+    ethminer --farm-recheck 2000 -X -F http://127.0.0.1:8080/rig1 &> /home/dima/ethminer.log &
 fi
